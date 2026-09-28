@@ -28,9 +28,7 @@ export function signAccessToken(payload: Omit<AccessTokenPayload, 'type'>): stri
   });
 }
 
-export function signRefreshToken(
-  payload: Omit<RefreshTokenPayload, 'type' | 'jti'>,
-): string {
+export function signRefreshToken(payload: Omit<RefreshTokenPayload, 'type' | 'jti'>): string {
   const config = getAuthConfig();
   return jwt.sign({ ...payload, jti: generateId(), type: 'refresh' }, config.jwtRefreshSecret, {
     expiresIn: config.jwtRefreshExpiresIn as jwt.SignOptions['expiresIn'],

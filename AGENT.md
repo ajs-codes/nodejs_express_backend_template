@@ -12,14 +12,12 @@ This file guides developers and AI agents working on this template. Follow these
 Routes → Controllers → Services → Repositories → Drizzle ORM → PostgreSQL
 ```
 
-
 | Layer            | Responsibility                                                | Must NOT contain                    |
 | ---------------- | ------------------------------------------------------------- | ----------------------------------- |
 | **Routes**       | HTTP method, URL, middleware chain                            | Business logic, SQL                 |
 | **Controllers**  | Receive validated request, call service, return HTTP response | SQL, Redis, BullMQ, SMTP, workflows |
 | **Services**     | Business rules, orchestration, transactions, queue dispatch   | Direct HTTP concerns                |
 | **Repositories** | Database access only                                          | Business workflows                  |
-
 
 ### Do NOT use
 
@@ -47,7 +45,6 @@ REST controllers and Socket.IO handlers **must reuse the same services**. Never 
 
 ### Naming
 
-
 | Type                | Pattern                     | Example              |
 | ------------------- | --------------------------- | -------------------- |
 | Files               | kebab-case or dot-separated | `auth.service.ts`    |
@@ -55,7 +52,6 @@ REST controllers and Socket.IO handlers **must reuse the same services**. Never 
 | Functions/variables | camelCase                   | `getCurrentUser`     |
 | Constants           | UPPER_SNAKE_CASE            | `QUEUE_NAMES`        |
 | DB tables           | snake_case (Drizzle)        | `refresh_token_hash` |
-
 
 ### Error handling
 
@@ -212,13 +208,11 @@ yarn validate
 
 Three separate entry points — do not combine:
 
-
 | Process   | Entry                  | PM2 Mode |
 | --------- | ---------------------- | -------- |
 | API       | `src/server.ts`        | cluster  |
 | Worker    | `src/worker.ts`        | fork     |
 | Socket.IO | `src/socket-server.ts` | fork     |
-
 
 ### Graceful shutdown order
 
@@ -269,4 +263,3 @@ Exit
 8. Do not blindly run forced dependency upgrades
 9. Do not create a second auth system for WebSockets
 10. Do not commit real secrets (`.env` files)
-

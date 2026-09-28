@@ -12,11 +12,11 @@ Services: API (PM2 cluster), worker, socket, PostgreSQL, Redis.
 
 Configuration in `ecosystem.config.cjs`:
 
-| App | Mode | Instances |
-|---|---|---|
-| api | cluster | max (CPU cores) |
-| worker | fork | 1 |
-| socket | fork | 1 |
+| App    | Mode    | Instances       |
+| ------ | ------- | --------------- |
+| api    | cluster | max (CPU cores) |
+| worker | fork    | 1               |
+| socket | fork    | 1               |
 
 ```bash
 yarn build
@@ -25,9 +25,9 @@ pm2-runtime ecosystem.config.cjs
 
 ## Health checks
 
-| Endpoint | Purpose |
-|---|---|
-| `GET /health/live` | Process alive |
+| Endpoint            | Purpose                      |
+| ------------------- | ---------------------------- |
+| `GET /health/live`  | Process alive                |
 | `GET /health/ready` | PostgreSQL + Redis available |
 
 Configure your load balancer or orchestrator to use these.

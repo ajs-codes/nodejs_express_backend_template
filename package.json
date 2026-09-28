@@ -8,6 +8,9 @@
   "engines": {
     "node": ">=24.0.0"
   },
+  "resolutions": {
+    "js-yaml": "4.3.2"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "dev:worker": "tsx watch src/worker.ts",
