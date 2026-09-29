@@ -47,8 +47,7 @@ yarn format:check
 ```bash
 docker compose -f compose.test.yaml up -d --wait
 yarn test
-yarn test:watch
-yarn test:coverage
+yarn test:ci # includes test coverage
 docker compose -f compose.test.yaml down -v
 ```
 
